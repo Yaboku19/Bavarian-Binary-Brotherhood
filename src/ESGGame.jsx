@@ -18,8 +18,6 @@ export default function ESGGame() {
     const [governance, setGovernance] = useState(50);
     const [moneyAvailable, setMoneyAvailable] = useState(10000);
     const [turnNumber, setTurnNumer] = useState(1);
-    const [selectedCard, setSelectedCard] = useState(null);
-    const [hoveredCard, setHoveredCard] = useState(null);
 
     const [playedCards, setPlayedCards] = useState([
     ]);
@@ -30,6 +28,18 @@ export default function ESGGame() {
         }
 
         //Calculate earnings
+
+        //For every card played, calculate the earnings by firstly calculate if the card made a profit or a loss with a randomNumber
+        //them add/substract the percntage change to the value
+        for(let card of playedCards) {
+            let randomNumber = Math.floor(Math.random() * 100);
+
+            if(randomNumber < card.probability * 100) {
+                card.value = card.value + (card.value * card.winPercentage);
+            } else {
+                card.value = card.value - (card.value * card.lossPercentage);
+            }
+        }
 
         //Calculate ESG impanct
 
@@ -70,32 +80,6 @@ export default function ESGGame() {
         // Remove the card from the played cards
         setPlayedCards(playedCards.filter((c) => c !== card));
     };
-
-    /**
-     * Highlights a HOVERD CARD
-     * @param {Object} e - The event object.
-     */
-    const highlightFeature = (e) => {
-        let layer = e.target;
-        layer.setStyle({
-            color: '#444',
-            weight: 2
-        });
-        layer.bringToFront();
-        setHoveredCard(layer.feature.properties);
-    }
-
-    /**
-     * Resets the highlight of a target element.
-     * @param {Event} e - The event object.
-     */
-    const resetHighlight = (e) => {
-        e.target.setStyle({
-            color: '#888',
-            weight: 1
-        });
-        setHoveredCard(null);
-    } 
 
     const cardDataArray = [
         new CardModel('Card 1', 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0),
