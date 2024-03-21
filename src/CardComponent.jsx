@@ -1,6 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 export function CardComponent({cardData, checkMoneyIsValid, handleBuyClick}) {
+    const [price, setPrice] = useState(0);
+
+    const handlePriceChange = (event) => {
+        setPrice(event.target.value);
+    }
+    
     return (
         <div>
             <div>
@@ -31,8 +37,8 @@ export function CardComponent({cardData, checkMoneyIsValid, handleBuyClick}) {
                 <input type="text" value={cardData.governanceRating} readOnly />
             </div>
             <div>
-                <input type="number" onChange={checkMoneyIsValid} />
-                <button onClick={() => handleBuyClick(cardData)}>Buy</button>
+                <input type="number" onChange={handlePriceChange} />
+                <button onClick={() => handleBuyClick(cardData, price)}>Buy</button>
             </div>
         </div>
     );

@@ -1,10 +1,6 @@
 import React from 'react';
 
-export default function PlayedCards({ cardModels }) {
-    const handleSellCard = (card) => {
-        // Logic to sell the card
-        console.log(`Selling card: ${card.name}`);
-    };
+export default function PlayedCards({ cardModels, handleSellCard }) {
 
     const totalRow = cardModels.reduce(
         (acc, card) => {
@@ -14,6 +10,8 @@ export default function PlayedCards({ cardModels }) {
             acc.ecologyRating += card.ecologyRating;
             acc.socialRating += card.socialRating;
             acc.governanceRating += card.governanceRating;
+            acc.priceBought += parseInt(card.priceBought);
+            acc.value += parseInt(card.value);
             return acc;
         },
         {
@@ -23,6 +21,8 @@ export default function PlayedCards({ cardModels }) {
             ecologyRating: 0,
             socialRating: 0,
             governanceRating: 0,
+            priceBought: 0,
+            value: 0,
         }
     );
 
@@ -37,6 +37,8 @@ export default function PlayedCards({ cardModels }) {
                     <th>Ecology Rating</th>
                     <th>Social Rating</th>
                     <th>Governance Rating</th>
+                    <th>Price bought</th>
+                    <th>Value</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -50,6 +52,8 @@ export default function PlayedCards({ cardModels }) {
                         <td>{card.ecologyRating}</td>
                         <td>{card.socialRating}</td>
                         <td>{card.governanceRating}</td>
+                        <td>{card.priceBought}</td>
+                        <td>{card.value}</td>
                         <td>
                             <button onClick={() => handleSellCard(card)}>Sell</button>
                         </td>
@@ -63,6 +67,8 @@ export default function PlayedCards({ cardModels }) {
                     <td>{totalRow.ecologyRating}</td>
                     <td>{totalRow.socialRating}</td>
                     <td>{totalRow.governanceRating}</td>
+                    <td>{totalRow.priceBought}</td>
+                    <td>{totalRow.value}</td>
                     <td></td>
                 </tr>
             </tbody>

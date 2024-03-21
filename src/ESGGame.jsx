@@ -38,9 +38,38 @@ export default function ESGGame() {
         setTurnNumer(turnNumber + 1);
     }
 
-    const handleCardPlayed = (cardData) => {
+    const handleCardPlayed = (cardData, price) => {
+        //Check if the player has enough money
+        price = parseInt(price);
+        setMoneyAvailable(parseInt(moneyAvailable));
+        
+        if(price > moneyAvailable) {
+            return;
+        }
+
+        //Substract the money from the player
+        setMoneyAvailable(moneyAvailable - price);
+
+        //Set price and value of cardData
+        cardData.priceBought = price;
+        cardData.value = price;
+
         setPlayedCards([...playedCards, cardData]);
+
+        //End the turn
+
+        handleTurnChange();
     }
+
+    const handleSellCard = (card) => {
+        // Logic to sell the card
+        
+        // Add the money to the player
+        setMoneyAvailable(moneyAvailable + parseInt(card.value));
+
+        // Remove the card from the played cards
+        setPlayedCards(playedCards.filter((c) => c !== card));
+    };
 
     /**
      * Highlights a HOVERD CARD
@@ -69,15 +98,15 @@ export default function ESGGame() {
     } 
 
     const cardDataArray = [
-        new CardModel('Card 1', 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
-        new CardModel('Card 2', 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
-        new CardModel('Card 3', 0.5, 0.5, 0.5, 0.5, 0.5, 0.5)
+        new CardModel('Card 1', 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0),
+        new CardModel('Card 2', 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0),
+        new CardModel('Card 3', 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0)
     ];
 
     return (
         <div className='esgGame' >
             <ESGRow sustainability={sustainability} social={social} governance={governance} />
-            <PlayedCards cardModels={playedCards} />
+            <PlayedCards cardModels={playedCards} handleSellCard={handleSellCard} />
             <CardHand cardData={cardDataArray} onPlayCard={handleCardPlayed}/>
             <BottomBar money={moneyAvailable} currentTurn={turnNumber} nextTurnHandler={handleTurnChange} />
         </div>
