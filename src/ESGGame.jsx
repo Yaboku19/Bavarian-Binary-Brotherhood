@@ -6,6 +6,7 @@ import { CardHand } from './CardHand';
 import CardModel from './CardModel';
 import ESGRow from './ESGRow';
 import PlayedCards from './PlayedCards';
+import { MonopolyCard } from './MonopoliCard';
 
 /**
  * Renders a Choropleth Map component.
@@ -126,10 +127,15 @@ export default function ESGGame() {
 
     return (
         <div className='esgGame' >
+            <MonopolyCard 
+                headerColor="#4169E1" 
+                title="Park Place" 
+            />
             <ESGRow sustainability={sustainability} social={social} governance={governance} />
             <PlayedCards cardModels={playedCards} handleSellCard={handleSellCard} />
             <CardHand cardData={cardsInHand} onPlayCard={handleCardPlayed}/>
             <BottomBar money={moneyAvailable} currentTurn={turnNumber} nextTurnHandler={handleTurnChange} />
+            
         </div>
     );
 }

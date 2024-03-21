@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function MonopolyCard({ headerColor, title, price, description }) {
+export function MonopolyCard({ headerColor, title }) {
     const cardStyle = {
         border: '1px solid black',
         borderRadius: '10px',
@@ -17,14 +17,13 @@ export function MonopolyCard({ headerColor, title, price, description }) {
         textAlign: 'center'
     };
 
-    const priceStyle = {
-        fontSize: '18px',
-        textAlign: 'center'
-    };
-
-    const descStyle = {
-        fontSize: '16px',
-        textAlign: 'center'
+    const iconWithTextStyle = {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '10px',
+        marginBottom: '10px'
     };
 
     return (
@@ -32,11 +31,9 @@ export function MonopolyCard({ headerColor, title, price, description }) {
             <div style={headerStyle}>
                 {title}
             </div>
-            <div style={priceStyle}>
-                {price}
-            </div>
-            <div style={descStyle}>
-                {description}
+            <div style={iconWithTextStyle}>
+                <img src={require("./icon/propability.jpeg")} alt="Winning Probility" />
+                <p>example</p>
             </div>
         </div>
     );
