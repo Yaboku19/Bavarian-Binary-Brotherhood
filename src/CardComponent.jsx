@@ -32,7 +32,7 @@ export function CardComponent({cardData, checkMoneyIsValid, handleBuyClick}) {
             </div>
             <div>
                 <input type="number" onChange={checkMoneyIsValid} />
-                <button onClick={handleBuyClick}>Buy</button>
+                <button onClick={() => handleBuyClick(cardData)}>Buy</button>
             </div>
         </div>
     );

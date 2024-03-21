@@ -38,8 +38,8 @@ export default function ESGGame() {
         setTurnNumer(turnNumber + 1);
     }
 
-    const handleCardPlayed = (event) => {
-        setPlayedCards([...playedCards, event.target.cardData]);
+    const handleCardPlayed = (cardData) => {
+        setPlayedCards([...playedCards, cardData]);
     }
 
     /**
