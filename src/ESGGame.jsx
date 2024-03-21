@@ -130,6 +130,7 @@ export default function ESGGame() {
             <MonopolyCard 
                 headerColor="#4169E1" 
                 title="Park Place" 
+                values={[100, 200, 300, 400, 500, 600]}
             />
             <ESGRow sustainability={sustainability} social={social} governance={governance} />
             <PlayedCards cardModels={playedCards} handleSellCard={handleSellCard} />

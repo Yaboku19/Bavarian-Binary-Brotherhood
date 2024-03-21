@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function MonopolyCard({ headerColor, title }) {
+export function MonopolyCard({ headerColor, title, values}) {
     const cardStyle = {
         border: '1px solid black',
         borderRadius: '10px',
@@ -9,6 +9,13 @@ export function MonopolyCard({ headerColor, title }) {
         padding: '10px'
     };
 
+    const icons = ["./icon/propability.jpeg", 
+        "./icon/propability.jpeg", 
+        "./icon/propability.jpeg", 
+        "./icon/propability.jpeg", 
+        "./icon/propability.jpeg", 
+        "./icon/propability.jpeg"];
+    
     const headerStyle = {
         backgroundColor: headerColor,
         padding: '10px',
@@ -31,10 +38,13 @@ export function MonopolyCard({ headerColor, title }) {
             <div style={headerStyle}>
                 {title}
             </div>
-            <div style={iconWithTextStyle}>
-                <img src={require("./icon/propability.jpeg")} alt="Winning Probility" />
-                <p>example</p>
-            </div>
+            {values.map((value, index) => (
+                <div key={index} style={iconWithTextStyle}>
+                    <img src={require("./icon/propability.jpeg")} alt="Winning Probility" />
+                    <p>{value}</p>
+                    <p>{icons[index]}</p>
+                </div>
+            ))}
         </div>
     );
 }
