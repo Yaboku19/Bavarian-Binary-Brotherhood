@@ -47,32 +47,32 @@ export function MonopolyCard({ headerColor, cardData, handleBuyClick }) {
       <div style={headerStyle}>{cardData.name}</div>
       <div >
         <CardRow
-          cardData={cardData.probability}
+          cardData={Math.round(cardData.probability * 100) + "%"}
           imageSrc={require("./icon/probability.jpeg")}
           tooltip="Probability"
         ></CardRow>
         <CardRow
-          cardData={cardData.winPercentage}
+          cardData={Math.round(cardData.winPercentage * 100) + "%"}
           imageSrc={require("./icon/ArrowUp.jpeg")}
           tooltip="Win Percentage"
         ></CardRow>
         <CardRow
-          cardData={cardData.lossPercentage}
+          cardData={Math.round(cardData.lossPercentage * 100) + "%"}
           imageSrc={require("./icon/ArrowDown.jpeg")}
           tooltip="Loss Percentage"
         ></CardRow>
         <CardRow
-          cardData={cardData.ecologyRating}
+          cardData={Math.round(cardData.ecologyRating * 100)}
           imageSrc={require("./icon/tree.jpeg")}
           tooltip="Ecology Rating"
         ></CardRow>
         <CardRow
-          cardData={cardData.socialRating}
+          cardData={Math.round(cardData.socialRating * 100)}
           imageSrc={require("./icon/social.jpeg")}
           tooltip="Social Rating"
         ></CardRow>
         <CardRow
-          cardData={cardData.governanceRating}
+          cardData={Math.round(cardData.governanceRating * 100)}
           imageSrc={require("./icon/governance.jpeg")}
           tooltip="Governance Rating"
         ></CardRow>
