@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import { Typography, CardActions, Button } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 
-export default function CardRow({ cardData, imageSrc }) {
+export default function CardRow({ cardData, imageSrc, tooltip }) {
   return (
     <div
       style={{
@@ -21,6 +21,7 @@ export default function CardRow({ cardData, imageSrc }) {
         style={{
           border: "2px solid black",
         }}
+        title={tooltip}
       />
 
       <div style={{}}>
