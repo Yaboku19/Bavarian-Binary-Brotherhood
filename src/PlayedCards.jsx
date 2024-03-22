@@ -1,3 +1,4 @@
+import { border, style } from '@mui/system';
 import React from 'react';
 
 export default function PlayedCards({ cardModels, handleSellCard }) {
@@ -27,50 +28,54 @@ export default function PlayedCards({ cardModels, handleSellCard }) {
     );
 
     return (
-        <table>
+        <table style={{
+            borderCollapse: "collapse",
+            outline: "1px solid #3b3d3d",
+            marginTop: "10px"
+          }}>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Probability</th>
-                    <th>Win Percentage</th>
-                    <th>Loss Percentage</th>
-                    <th>Ecology Rating</th>
-                    <th>Social Rating</th>
-                    <th>Governance Rating</th>
-                    <th>Price bought</th>
-                    <th>Value</th>
-                    <th>Action</th>
+                    <th style={{ border: "2px solid #3b3d3d", backgroundColor:"#4169E1", color: "white", width: "70px"}}>Name</th>
+                    <th style={{ border: "2px solid #3b3d3d", backgroundColor:"#4169E1", color: "white", width: "90px"}}>Probability</th>
+                    <th style={{ border: "2px solid #3b3d3d", backgroundColor:"#4169E1", color: "white", width: "130px"}}>Win Percentage</th>
+                    <th style={{ border: "2px solid #3b3d3d", backgroundColor:"#4169E1", color: "white", width: "135px"}}>Loss Percentage</th>
+                    <th style={{ border: "2px solid #3b3d3d", backgroundColor:"#4169E1", color: "white", width: "125px"}}>Ecology Rating</th>
+                    <th style={{ border: "2px solid #3b3d3d", backgroundColor:"#4169E1", color: "white", width: "110px" }}>Social Rating</th>
+                    <th style={{ border: "2px solid #3b3d3d", backgroundColor:"#4169E1", color: "white", width: "155px" }}>Governance Rating</th>
+                    <th style={{ border: "2px solid #3b3d3d", backgroundColor:"#4169E1", color: "white", width: "110px" }}>Price bought</th>
+                    <th style={{ border: "2px solid #3b3d3d", backgroundColor:"#4169E1", color: "white", width: "50px"}}>Value</th>
+                    <th style={{ border: "2px solid #3b3d3d", backgroundColor:"#4169E1", color: "white", width: "60px"}}>Action</th>
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <th style={{ border: "2px solid #3b3d3d", backgroundColor:"#4169E1", color: "white",}}>Total</th>
+                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.probability}</td>
+                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.winPercentage}</td>
+                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.lossPercentage}</td>
+                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.ecologyRating}</td>
+                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.socialRating}</td>
+                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.governanceRating}</td>
+                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.priceBought}</td>
+                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.value}</td>
+                    <td style={{backgroundColor:"#c9f3f5", border: "2px solid lightgrey"}}></td>
+                </tr>
                 {cardModels.map((card) => (
                     <tr key={card.name}>
-                        <td>{card.name}</td>
-                        <td>{card.probability}</td>
-                        <td>{card.winPercentage}</td>
-                        <td>{card.lossPercentage}</td>
-                        <td>{card.ecologyRating}</td>
-                        <td>{card.socialRating}</td>
-                        <td>{card.governanceRating}</td>
-                        <td>{card.priceBought}</td>
-                        <td>{card.value}</td>
-                        <td>
-                            <button onClick={() => handleSellCard(card)}>Sell</button>
+                        <th style={{ border: "2px solid #3b3d3d", backgroundColor:"#4169E1", color: "white",}}>{card.name}</th>
+                        <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{card.probability}</td>
+                        <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{card.winPercentage}</td>
+                        <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{card.lossPercentage}</td>
+                        <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{card.ecologyRating}</td>
+                        <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{card.socialRating}</td>
+                        <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{card.governanceRating}</td>
+                        <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{card.priceBought}</td>
+                        <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{card.value}</td>
+                        <td style={{textAlign:"center", border: "2px solid lightgrey", backgroundColor:"#c9f3f5"}}>
+                            <button onClick={() => handleSellCard(card)} >Sell</button>
                         </td>
                     </tr>
                 ))}
-                <tr>
-                    <td>Total</td>
-                    <td>{totalRow.probability}</td>
-                    <td>{totalRow.winPercentage}</td>
-                    <td>{totalRow.lossPercentage}</td>
-                    <td>{totalRow.ecologyRating}</td>
-                    <td>{totalRow.socialRating}</td>
-                    <td>{totalRow.governanceRating}</td>
-                    <td>{totalRow.priceBought}</td>
-                    <td>{totalRow.value}</td>
-                    <td></td>
-                </tr>
             </tbody>
         </table>
     );

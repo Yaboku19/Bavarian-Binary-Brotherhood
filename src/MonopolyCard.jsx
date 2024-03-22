@@ -14,6 +14,7 @@ export function MonopolyCard({ headerColor, title, cardData, handleBuyClick }) {
     minWidth: "200px",
     margin: "1em",
     padding: "10px",
+    backgroundColor:"#c9f3f5"
   };
 
   const handlePriceChange = (event) => {
@@ -35,6 +36,7 @@ export function MonopolyCard({ headerColor, title, cardData, handleBuyClick }) {
     color: "white",
     fontSize: "20px",
     textAlign: "center",
+    border: "1px solid black"
   };
 
   const iconWithTextStyle = {};
@@ -42,7 +44,7 @@ export function MonopolyCard({ headerColor, title, cardData, handleBuyClick }) {
   return (
     <div style={cardStyle}>
       <div style={headerStyle}>{title}</div>
-      <div>
+      <div style={{marginTop:"10px"}}>
       <CardRow
           cardData={cardData.probability}
           imageSrc={require("./icon/probability.jpeg")}
@@ -69,7 +71,7 @@ export function MonopolyCard({ headerColor, title, cardData, handleBuyClick }) {
         ></CardRow>
       </div>
       <div>
-          <input type="number" onChange={handlePriceChange} />
+          <input type="number" onChange={handlePriceChange} style={{marginRight: "2px"}} />
           <button onClick={() => handleBuyClick(cardData, price)}>Buy</button>
         </div>
     </div>

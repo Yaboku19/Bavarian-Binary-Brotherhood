@@ -89,7 +89,7 @@ export default function ESGGame() {
   ];
 
   return (
-    <div className="esgGame">
+    <div className="esgGame" style={{backgroundColor: "white"}}>
       <ESGRow
         sustainability={sustainability}
         social={social}
