@@ -6,6 +6,7 @@ import { CardHand } from './CardHand';
 import CardModel from './CardModel';
 import ESGRow from './ESGRow';
 import PlayedCards from './PlayedCards';
+import cards from './PlayingCardsGenerator';
 
 /**
  * Renders a Choropleth Map component.
@@ -20,13 +21,7 @@ export default function ESGGame() {
     const [turnNumber, setTurnNumer] = useState(1);
 
     //Load from JSON file
-    const [cardsInDeck, setCardsInDeck] = useState([
-        new CardModel('Card 1', 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0),
-        new CardModel('Card 2', 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0),
-        new CardModel('Card 3', 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0),
-        new CardModel('Card 4', 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0),
-        new CardModel('Card 5', 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0)
-    ]);
+    const [cardsInDeck, setCardsInDeck] = useState(cards);
 
     const [playedCards, setPlayedCards] = useState([
     ]);

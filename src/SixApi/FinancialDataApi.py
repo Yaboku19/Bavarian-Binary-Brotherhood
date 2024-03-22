@@ -69,5 +69,5 @@ class FinancialDataAPI:
 if __name__ == '__main__':
     findata = FinancialDataAPI("C:\\Users\\lukas\\OneDrive\\Dokumente\\Studium\\Start Hack\\Bavarian Binary Brotherhood\\Bavarian-Binary-Brotherhood\\src\\SixApi\\Certificate")
 
-    sample1 = findata.endOfDayHistory("ISIN_BC", ["BE6342120662"], "2022-01-01", "2022-01-31")
+    sample1 = findata.endOfDayHistory("ISIN_BC", ["693053"], "2022-01-01", "2022-01-31")
     print(json.dumps(sample1, sort_keys=True, indent=4))
