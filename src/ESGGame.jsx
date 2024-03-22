@@ -89,7 +89,7 @@ export default function ESGGame() {
   ];
 
   return (
-    <div className="esgGame" style={{backgroundColor: "white"}}>
+    <div className="esgGame" style={{backgroundColor: "white", marginTop: "50px"}}>
       <ESGRow
         sustainability={sustainability}
         social={social}
@@ -102,7 +102,7 @@ export default function ESGGame() {
         currentTurn={turnNumber}
         nextTurnHandler={handleTurnChange}
       />
-      <PlayedCards cardModels={playedCards} handleSellCard={handleSellCard} />
+      <PlayedCards cardModels={playedCards} handleSellCard={handleSellCard}/>
     </div>
   );
 }
