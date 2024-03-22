@@ -19,19 +19,16 @@ return (
     <div style={{ display: "flex" }}>
       <MonopolyCard
         headerColor="#4169E1"
-        title="Park Place"
         cardData={cardDataList[0]}
         handleBuyClick={onPlayCard}
       />
       <MonopolyCard
         headerColor="#4169E1"
-        title="Park Place"
         cardData={cardDataList[1]}
         handleBuyClick={onPlayCard}
       />
       <MonopolyCard
         headerColor="#4169E1"
-        title="Park Place"
         cardData={cardDataList[2]}
         handleBuyClick={onPlayCard}
       />

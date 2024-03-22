@@ -8,6 +8,7 @@ import CardModel from "./CardModel";
 import ESGRow from "./ESGRow";
 import PlayedCards from "./PlayedCards";
 import { MonopolyCard } from "./MonopolyCard";
+import generateRandomCards from "./PlayingCardsGenerator";
 
 /**
  * Renders a Choropleth Map component.
@@ -21,7 +22,31 @@ export default function ESGGame() {
   const [moneyAvailable, setMoneyAvailable] = useState(10000);
   const [turnNumber, setTurnNumer] = useState(1);
 
+  //Load from JSON file
+  const [cardsInDeck, setCardsInDeck] = useState(generateRandomCards());
   const [playedCards, setPlayedCards] = useState([]);
+
+  const [cardsInHand, setCardsInHand] = useState(getRandomCards());
+
+    function getRandomCards() {
+        const randomCards = [];
+
+        const numberOfCards = cardsInDeck.length < 3 ? cardsInDeck.length : 3;
+
+        const uniqueCards = new Set();
+
+        while (uniqueCards.size < numberOfCards) {
+            const randomIndex = Math.floor(Math.random() * cardsInDeck.length);
+            const randomCard = cardsInDeck[randomIndex];
+            uniqueCards.add(randomCard);
+        }
+
+        randomCards.push(...uniqueCards);
+
+        return randomCards;
+    }
+
+    // Use the randomCards array as needed
 
   const handleTurnChange = (event) => {
     if (turnNumber === 25) {
@@ -46,6 +71,10 @@ export default function ESGGame() {
 
     //Change the graphics
 
+    //Load new cards
+
+    setCardsInHand(getRandomCards);
+
     setTurnNumer(turnNumber + 1);
   };
 
@@ -67,6 +96,12 @@ export default function ESGGame() {
 
     setPlayedCards([...playedCards, cardData]);
 
+    //Remove the played card from the deck
+    const playedCardIndex = cardsInDeck.findIndex((c) => c === cardData);
+    if (playedCardIndex !== -1) {
+        cardsInDeck.splice(playedCardIndex, 1);
+    }
+
     //End the turn
 
     handleTurnChange();
@@ -80,13 +115,11 @@ export default function ESGGame() {
 
     // Remove the card from the played cards
     setPlayedCards(playedCards.filter((c) => c !== card));
-  };
 
-  const cardDataArray = [
-    new CardModel("Card 1", 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0),
-    new CardModel("Card 2", 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0),
-    new CardModel("Card 3", 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0),
-  ];
+    //Add the card back to the deck
+    setCardsInDeck([...cardsInDeck, card]);
+
+  };
 
   return (
     <div className="esgGame">
@@ -96,7 +129,7 @@ export default function ESGGame() {
         governance={governance}
       />
       
-      <CardHand cardData={cardDataArray} onPlayCard={handleCardPlayed} />
+      <CardHand cardData={cardsInHand} onPlayCard={handleCardPlayed} />
       <BottomBar
         money={moneyAvailable}
         currentTurn={turnNumber}
