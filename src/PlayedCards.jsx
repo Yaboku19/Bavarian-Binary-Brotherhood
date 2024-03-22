@@ -8,9 +8,9 @@ export default function PlayedCards({ cardModels, handleSellCard }) {
             acc.probability += card.probability;
             acc.winPercentage += card.winPercentage;
             acc.lossPercentage += card.lossPercentage;
-            acc.ecologyRating += card.ecologyRating;
-            acc.socialRating += card.socialRating;
-            acc.governanceRating += card.governanceRating;
+            acc.ecologyRating += card.ecologyRating * card.value; // Multiply ecologyRating by card.value
+            acc.socialRating += card.socialRating * card.value; // Multiply socialRating by card.value
+            acc.governanceRating += card.governanceRating * card.value; // Multiply governanceRating by card.value
             acc.priceBought += parseInt(card.priceBought);
             acc.value += parseInt(card.value);
             return acc;
@@ -26,6 +26,21 @@ export default function PlayedCards({ cardModels, handleSellCard }) {
             value: 0,
         }
     );
+
+    // Calculate the average socialRating
+    if (totalRow.value !== 0) {
+        totalRow.socialRating = (totalRow.socialRating / totalRow.value).toFixed(2);
+    }
+
+    // Calculate the average ecologyRating
+    if (totalRow.value !== 0) {
+        totalRow.ecologyRating = (totalRow.ecologyRating / totalRow.value).toFixed(2);
+    }
+
+    // Calculate the average governanceRating
+    if (totalRow.value !== 0) {
+        totalRow.governanceRating = (totalRow.governanceRating / totalRow.value).toFixed(2);
+    }
 
     return (
         <table style={{
