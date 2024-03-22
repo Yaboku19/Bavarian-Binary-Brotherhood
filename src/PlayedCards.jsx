@@ -10,12 +10,14 @@ export default function PlayedCards({ cardModels, handleSellCard }) {
             acc.ecologyRating /= 100;
             acc.socialRating /= 100;
             acc.governanceRating /= 100;
-
+            console.log(acc.ecologyRating);
             acc.ecologyRating = (acc.ecologyRating * acc.value) + (card.ecologyRating * parseInt(card.value));
             acc.socialRating += (acc.socialRating * acc.value) + (card.socialRating * parseInt(card.value));
             acc.governanceRating += (acc.governanceRating * acc.value) + (card.governanceRating * parseInt(card.value));
-
+            console.log(acc.ecologyRating);
+            console.log("value " + acc.value);
             acc.value += parseInt(card.value);
+            console.log("value " + acc.value);
             acc.ecologyRating /= acc.value;
             acc.socialRating /= acc.value;
             acc.governanceRating /= acc.value;
@@ -38,11 +40,11 @@ export default function PlayedCards({ cardModels, handleSellCard }) {
             acc.lossPercentage *= 10000;
             acc.lossPercentage = Math.round(acc.lossPercentage);
             acc.lossPercentage /= 100;
-
+            console.log(acc.ecologyRating);
             acc.ecologyRating *= 10000;
             acc.ecologyRating = Math.round(acc.ecologyRating);
             acc.ecologyRating /= 100;
-
+            console.log(acc.ecologyRating);
             acc.socialRating *= 10000;
             acc.socialRating = Math.round(acc.socialRating);
             acc.socialRating /= 100;
@@ -64,20 +66,7 @@ export default function PlayedCards({ cardModels, handleSellCard }) {
         }
     );
 
-    // Calculate the average socialRating
-    if (totalRow.value !== 0) {
-        totalRow.socialRating = (totalRow.socialRating / totalRow.value).toFixed(2);
-    }
-
-    // Calculate the average ecologyRating
-    if (totalRow.value !== 0) {
-        totalRow.ecologyRating = (totalRow.ecologyRating / totalRow.value).toFixed(2);
-    }
-
-    // Calculate the average governanceRating
-    if (totalRow.value !== 0) {
-        totalRow.governanceRating = (totalRow.governanceRating / totalRow.value).toFixed(2);
-    }
+    
 
     return (
         <table style={{
