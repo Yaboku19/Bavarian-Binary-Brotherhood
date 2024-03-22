@@ -20,17 +20,20 @@ return (
       <MonopolyCard
         headerColor="#4169E1"
         title="Park Place"
-        values={[100, 200, 300, 400, 500, 600]}
+        cardData={cardDataList[0]}
+        handleBuyClick={onPlayCard}
       />
       <MonopolyCard
         headerColor="#4169E1"
         title="Park Place"
-        values={[100, 200, 300, 400, 500, 600]}
+        cardData={cardDataList[1]}
+        handleBuyClick={onPlayCard}
       />
       <MonopolyCard
         headerColor="#4169E1"
         title="Park Place"
-        values={[100, 200, 300, 400, 500, 600]}
+        cardData={cardDataList[2]}
+        handleBuyClick={onPlayCard}
       />
     </div>
   );

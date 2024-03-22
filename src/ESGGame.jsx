@@ -95,13 +95,14 @@ export default function ESGGame() {
         social={social}
         governance={governance}
       />
-      <PlayedCards cardModels={playedCards} handleSellCard={handleSellCard} />
+      
       <CardHand cardData={cardDataArray} onPlayCard={handleCardPlayed} />
       <BottomBar
         money={moneyAvailable}
         currentTurn={turnNumber}
         nextTurnHandler={handleTurnChange}
       />
+      <PlayedCards cardModels={playedCards} handleSellCard={handleSellCard} />
     </div>
   );
 }
