@@ -4,12 +4,6 @@ import React from 'react';
 export default function PlayedCards({ cardModels, handleSellCard }) {
     const totalRow = cardModels.reduce(
         (acc, card) => {
-            acc.probability /= 100;
-            acc.winPercentage /= 100;
-            acc.lossPercentage /= 100;
-            acc.ecologyRating /= 100;
-            acc.socialRating /= 100;
-            acc.governanceRating /= 100;
             console.log(acc.ecologyRating);
             acc.ecologyRating = (acc.ecologyRating * acc.value) + (card.ecologyRating * parseInt(card.value));
             acc.socialRating += (acc.socialRating * acc.value) + (card.socialRating * parseInt(card.value));
@@ -28,34 +22,10 @@ export default function PlayedCards({ cardModels, handleSellCard }) {
             acc.lossPercentage += (card.lossPercentage * card.value);
             acc.lossPercentage /= acc.value;
             acc.priceBought += parseInt(card.priceBought);
-
-            acc.probability *= 10000;
-            acc.probability = Math.round(acc.probability);
-            acc.probability /= 100;
-
-            acc.winPercentage *= 10000;
-            acc.winPercentage = Math.round(acc.winPercentage);
-            acc.winPercentage /= 100;
-
-            acc.lossPercentage *= 10000;
-            acc.lossPercentage = Math.round(acc.lossPercentage);
-            acc.lossPercentage /= 100;
-            console.log(acc.ecologyRating);
-            acc.ecologyRating *= 10000;
-            acc.ecologyRating = Math.round(acc.ecologyRating);
-            acc.ecologyRating /= 100;
-            console.log(acc.ecologyRating);
-            acc.socialRating *= 10000;
-            acc.socialRating = Math.round(acc.socialRating);
-            acc.socialRating /= 100;
-
-            acc.governanceRating *= 10000;
-            acc.governanceRating = Math.round(acc.governanceRating);
-            acc.governanceRating /= 100;
             return acc;
         },
         {
-            probability: 100,
+            probability: 1,
             winPercentage: 0,
             lossPercentage: 0,
             ecologyRating: 0,
@@ -91,14 +61,14 @@ export default function PlayedCards({ cardModels, handleSellCard }) {
             <tbody>
                 <tr>
                     <th style={{ border: "2px solid #3b3d3d", backgroundColor:"#4169E1", color: "white",}}>Total</th>
-                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.probability + "%"}</td>
-                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.winPercentage + "%"}</td>
-                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.lossPercentage + "%"}</td>
-                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.ecologyRating}</td>
-                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.socialRating}</td>
-                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.governanceRating}</td>
-                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.priceBought}</td>
-                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.value}</td>
+                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{(Math.round(totalRow.probability * 100)) + "%"}</td>
+                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{(Math.round(totalRow.winPercentage * 100)) + "%"}</td>
+                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{(Math.round(totalRow.lossPercentage * 100)) + "%"}</td>
+                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{(Math.round(totalRow.ecologyRating * 100))}</td>
+                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{(Math.round(totalRow.socialRating * 100))}</td>
+                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{(Math.round(totalRow.governanceRating * 100))}</td>
+                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.priceBought * 100}</td>
+                    <td style={{ border: "2px solid lightgrey", backgroundColor:"#c9f3f5" }}>{totalRow.value * 100}</td>
                     <td style={{backgroundColor:"#c9f3f5", border: "2px solid lightgrey"}}></td>
                 </tr>
                 {cardModels.map((card) => (
