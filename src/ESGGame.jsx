@@ -8,7 +8,7 @@ import CardModel from "./CardModel";
 import ESGRow from "./ESGRow";
 import PlayedCards from "./PlayedCards";
 import { MonopolyCard } from "./MonopolyCard";
-import cards from './PlayingCardsGenerator';
+import generateRandomCards from "./PlayingCardsGenerator";
 
 /**
  * Renders a Choropleth Map component.
@@ -23,7 +23,7 @@ export default function ESGGame() {
   const [turnNumber, setTurnNumer] = useState(1);
 
   //Load from JSON file
-  const [cardsInDeck, setCardsInDeck] = useState(cards);
+  const [cardsInDeck, setCardsInDeck] = useState(generateRandomCards());
   const [playedCards, setPlayedCards] = useState([]);
 
   const [cardsInHand, setCardsInHand] = useState(getRandomCards());

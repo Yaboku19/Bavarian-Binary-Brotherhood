@@ -38,7 +38,7 @@ export function MonopolyCard({ headerColor, cardData, handleBuyClick }) {
   };
 
   const iconWithTextStyle = {};
-  console.log(cardData);
+  
   return (
     <div style={cardStyle}>
       <div style={headerStyle}>{cardData.name}</div>
