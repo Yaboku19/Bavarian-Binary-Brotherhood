@@ -15,7 +15,7 @@ export function BottomBar({ money, currentTurn, nextTurnHandler }) {
     <div>
       <input type="text" value={"Balance: " + money} readOnly style={inputStyle}/>
       <input type="text" value={"Turn: " + currentTurn + "/25"} readOnly style={inputStyle}/>
-      <button onClick={nextTurnHandler}>Next Turn</button>
+      <button onClick={nextTurnHandler}>Skip Turn</button>
     </div>
   );
 }

@@ -64,6 +64,21 @@ export default function PlayedCards({ cardModels, handleSellCard }) {
         }
     );
 
+    // Calculate the average socialRating
+    if (totalRow.value !== 0) {
+        totalRow.socialRating = (totalRow.socialRating / totalRow.value).toFixed(2);
+    }
+
+    // Calculate the average ecologyRating
+    if (totalRow.value !== 0) {
+        totalRow.ecologyRating = (totalRow.ecologyRating / totalRow.value).toFixed(2);
+    }
+
+    // Calculate the average governanceRating
+    if (totalRow.value !== 0) {
+        totalRow.governanceRating = (totalRow.governanceRating / totalRow.value).toFixed(2);
+    }
+
     return (
         <table style={{
             borderCollapse: "collapse",

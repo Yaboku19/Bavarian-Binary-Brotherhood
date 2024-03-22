@@ -23,7 +23,7 @@ import G7 from "./icon/G7.png";
 
 export default function ESGRow({ sustainability, social, governance }) {
   const getIcon = (aspect, score) => {
-    const badness = 100 - score;
+    const badness = 100 - score * 100;
     var number = Math.floor(badness / 15);
 
     const Es = [E1, E2, E3, E4, E5, E6, E7];
@@ -49,7 +49,7 @@ export default function ESGRow({ sustainability, social, governance }) {
         </div>
         <div>
           <img
-            src={getIcon("S", 100)}
+            src={getIcon("S", social)}
             alt="Social Icon"
             style={{
               paddingInline: "105px",

@@ -69,7 +69,27 @@ export default function ESGGame() {
 
     //Calculate ESG impanct
 
-    //Change the graphics
+    let totalValue = 0;
+    let weightedSumSocial = 0;
+    let weightedSumEcological = 0;
+    let weightedSumGovernmental = 0;
+
+    for (let card of playedCards) {
+      totalValue += card.value;
+      weightedSumSocial += card.socialRating * card.value;
+      weightedSumEcological += card.ecologyRating * card.value;
+      weightedSumGovernmental += card.governanceRating * card.value;
+    }
+
+    const averageSocialScore = totalValue !== 0 ? weightedSumSocial / totalValue : 0;
+    const averageEcologicalScore = totalValue !== 0 ? weightedSumEcological / totalValue : 0;
+    const averageGovernmentalScore = totalValue !== 0 ? weightedSumGovernmental / totalValue : 0;
+    
+
+    //Update the ESG scores
+    setSustainability(averageEcologicalScore);
+    setSocial(averageSocialScore);
+    setGovernance(averageGovernmentalScore);
 
     //Load new cards
 
