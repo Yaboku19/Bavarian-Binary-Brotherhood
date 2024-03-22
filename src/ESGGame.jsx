@@ -7,6 +7,7 @@ import { CardHand } from "./CardHand";
 import CardModel from "./CardModel";
 import ESGRow from "./ESGRow";
 import PlayedCards from "./PlayedCards";
+import { MonopolyCard } from "./MonopolyCard";
 
 /**
  * Renders a Choropleth Map component.
@@ -20,8 +21,7 @@ export default function ESGGame() {
   const [moneyAvailable, setMoneyAvailable] = useState(10000);
   const [turnNumber, setTurnNumer] = useState(1);
 
-    const [playedCards, setPlayedCards] = useState([
-    ]);
+  const [playedCards, setPlayedCards] = useState([]);
 
   const handleTurnChange = (event) => {
     if (turnNumber === 25) {
@@ -44,7 +44,7 @@ export default function ESGGame() {
 
     //Calculate ESG impanct
 
-        //Change the graphics
+    //Change the graphics
 
     setTurnNumer(turnNumber + 1);
   };
@@ -65,7 +65,7 @@ export default function ESGGame() {
     cardData.priceBought = price;
     cardData.value = price;
 
-        setPlayedCards([...playedCards, cardData]);
+    setPlayedCards([...playedCards, cardData]);
 
     //End the turn
 
@@ -78,22 +78,30 @@ export default function ESGGame() {
     // Add the money to the player
     setMoneyAvailable(moneyAvailable + parseInt(card.value));
 
-        // Remove the card from the played cards
-        setPlayedCards(playedCards.filter((c) => c !== card));
-    };
+    // Remove the card from the played cards
+    setPlayedCards(playedCards.filter((c) => c !== card));
+  };
 
-    const cardDataArray = [
-        new CardModel('Card 1', 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0),
-        new CardModel('Card 2', 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0),
-        new CardModel('Card 3', 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0)
-    ];
+  const cardDataArray = [
+    new CardModel("Card 1", 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0),
+    new CardModel("Card 2", 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0),
+    new CardModel("Card 3", 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0),
+  ];
 
-    return (
-        <div className='esgGame' >
-            <ESGRow sustainability={sustainability} social={social} governance={governance} />
-            <PlayedCards cardModels={playedCards} handleSellCard={handleSellCard} />
-            <CardHand cardData={cardDataArray} onPlayCard={handleCardPlayed}/>
-            <BottomBar money={moneyAvailable} currentTurn={turnNumber} nextTurnHandler={handleTurnChange} />
-        </div>
-    );
+  return (
+    <div className="esgGame">
+      <ESGRow
+        sustainability={sustainability}
+        social={social}
+        governance={governance}
+      />
+      <PlayedCards cardModels={playedCards} handleSellCard={handleSellCard} />
+      <CardHand cardData={cardDataArray} onPlayCard={handleCardPlayed} />
+      <BottomBar
+        money={moneyAvailable}
+        currentTurn={turnNumber}
+        nextTurnHandler={handleTurnChange}
+      />
+    </div>
+  );
 }

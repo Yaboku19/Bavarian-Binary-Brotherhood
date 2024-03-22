@@ -5,19 +5,25 @@ import CardContent from "@mui/material/CardContent";
 
 export default function CardRow({ cardData, imageSrc }) {
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" }}>
-      <div style={{ flex: 1 }}></div>
-      <div>
-        <img src={imageSrc} alt="Profit Percent" />
-      </div>
-      <div
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "left",
+        justifyContent: "space-between",
+        gap: "10px",
+        marginBottom: "10px",
+      }}
+    >
+      <img
+        src={imageSrc}
+        alt="Profit Percent"
         style={{
-          flex: 1,
-          display: "flex",
-          justifyContent: "flex-end",
-          alignItems: "center",
+          border: "2px solid black",
         }}
-      >
+      />
+
+      <div style={{}}>
         <Typography variant="body1">{cardData}</Typography>
       </div>
     </div>
