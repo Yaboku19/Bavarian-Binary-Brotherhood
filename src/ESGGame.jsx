@@ -16,9 +16,9 @@ import generateRandomCards from "./PlayingCardsGenerator";
  * @returns {JSX.Element} The Choropleth Map component.
  */
 export default function ESGGame() {
-  const [sustainability, setSustainability] = useState(50);
-  const [social, setSocial] = useState(50);
-  const [governance, setGovernance] = useState(50);
+  const [sustainability, setSustainability] = useState(0.5);
+  const [social, setSocial] = useState(0.5);
+  const [governance, setGovernance] = useState(0.5);
   const [moneyAvailable, setMoneyAvailable] = useState(10000);
   const [turnNumber, setTurnNumer] = useState(1);
 
