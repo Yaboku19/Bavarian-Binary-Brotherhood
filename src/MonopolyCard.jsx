@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import CardRow from "./CardRow";
+import Card from "@mui/material/Card";
+import { Typography, CardActions, Button } from "@mui/material";
+import CardContent from "@mui/material/CardContent";
 
-export function MonopolyCard({ headerColor, title, values }) {
+
+export function MonopolyCard({ headerColor, title, cardData, handleBuyClick }) {
+
+  const [price, setPrice] = useState(0);
   const cardStyle = {
     border: "1px solid black",
     borderRadius: "10px",
     minWidth: "200px",
     margin: "1em",
     padding: "10px",
+  };
+
+  const handlePriceChange = (event) => {
+    setPrice(event.target.value);
   };
 
   const icons = [
@@ -28,34 +38,40 @@ export function MonopolyCard({ headerColor, title, values }) {
   };
 
   const iconWithTextStyle = {};
-
+  console.log(cardData);
   return (
     <div style={cardStyle}>
       <div style={headerStyle}>{title}</div>
+      <div>
       <CardRow
-        cardData={values[0]}
-        imageSrc={require("./icon/probability.jpeg")}
-      ></CardRow>
-      <CardRow
-        cardData={values[1]}
-        imageSrc={require("./icon/ArrowUp.jpeg")}
-      ></CardRow>
-      <CardRow
-        cardData={values[2]}
-        imageSrc={require("./icon/ArrowDown.jpeg")}
-      ></CardRow>
-      <CardRow
-        cardData={values[3]}
-        imageSrc={require("./icon/tree.jpeg")}
-      ></CardRow>
-      <CardRow
-        cardData={values[4]}
-        imageSrc={require("./icon/social.jpeg")}
-      ></CardRow>
-      <CardRow
-        cardData={values[5]}
-        imageSrc={require("./icon/governance.jpeg")}
-      ></CardRow>
+          cardData={cardData.probability}
+          imageSrc={require("./icon/probability.jpeg")}
+        ></CardRow>
+        <CardRow
+          cardData={cardData.winPercentage}
+          imageSrc={require("./icon/ArrowUp.jpeg")}
+        ></CardRow>
+        <CardRow
+          cardData={cardData.lossPercentage}
+          imageSrc={require("./icon/ArrowDown.jpeg")}
+        ></CardRow>
+        <CardRow
+          cardData={cardData.ecologyRating}
+          imageSrc={require("./icon/tree.jpeg")}
+        ></CardRow>
+        <CardRow
+          cardData={cardData.socialRating}
+          imageSrc={require("./icon/social.jpeg")}
+        ></CardRow>
+        <CardRow
+          cardData={cardData.governanceRating}
+          imageSrc={require("./icon/governance.jpeg")}
+        ></CardRow>
+      </div>
+      <div>
+          <input type="number" onChange={handlePriceChange} />
+          <button onClick={() => handleBuyClick(cardData, price)}>Buy</button>
+        </div>
     </div>
   );
 }
